@@ -14,10 +14,9 @@ services:
       --collation-server=utf8mb4_general_ci
       --explicit_defaults_for_timestamp=true
     volumes:
-      - /Users/panxiaoan/work/docker/mysql-8.0.21-33061/data:/var/lib/mysql:rw # 数据
-      - /Users/panxiaoan/work/docker/mysql-8.0.21-33061/conf:/etc/mysql:rw # 配置
-      - /Users/panxiaoan/work/docker/mysql-8.0.21-33061/conf:/etc/mysql/my.cnf:rw
-      - /Users/panxiaoan/work/docker/mysql-8.0.21-33061/mysql-files:/var/lib/mysql-files:rw
+      - /Users/panxiaoan/work/docker/mysql-8.0.21-33061/data:/var/lib/mysql # 数据
+      - /Users/panxiaoan/work/docker/mysql-8.0.21-33060/conf/my.cnf:/etc/mysql/my.cnf # 配置
+      - /Users/panxiaoan/work/docker/mysql-8.0.21-33061/mysql-files:/var/lib/mysql-files
       # - /etc/localtime:/etc/localtime:ro
     environment:
       TZ: Asia/Shanghai
