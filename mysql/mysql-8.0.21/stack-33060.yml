@@ -3,7 +3,7 @@
 version: '3.1'
 
 services:
-  db:
+  mysql-8021-33060:
     image: mysql:8.0.21
     container_name: mysql-8021-33060
     restart: always

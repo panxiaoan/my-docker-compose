@@ -1,9 +1,9 @@
 # Use root/example as user/password credentials
 # https://hub.docker.com/_/mysql/
-version: '3.1'
+version: '3.2'
 
 services:
-  db:
+  mysql-8021-33061:
     image: mysql:8.0.21
     container_name: mysql-8021-33061
     restart: always
