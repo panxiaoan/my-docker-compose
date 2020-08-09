@@ -1,0 +1,21 @@
+# https://hub.docker.com/_/redis?tab=tags
+version: '3'
+
+services:
+  redis:
+    image: redis:6.0.6
+    container_name: redis
+    hostname: redis
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - net_db
+    volumes:
+      - /Users/panxiaoan/work/docker/redis/redis.conf:/etc/redis/redis.conf:rw
+      - /Users/panxiaoan/work/docker/redis/data:/data:rw
+    command:
+      redis-server /etc/redis/redis.conf --requirepass redis --appendonly yes
+networks:
+  net_db:
+    driver: bridge
