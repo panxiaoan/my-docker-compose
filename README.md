@@ -1,10 +1,14 @@
 # Docker Common Images
 
+Java 工程师常用镜像的 Dockerfile，方便快速搭建开发环境
+
 # 镜像构建列表
 - MySQL 8.0.21
   - MySQL Desktop GUI：Navicat for MySQ
 - Redis 6.0.6
   - Reids Desktop GUI: https://tableplus.com
+- Influxdb 1.8, 时序数据库
+- Grafana 7.1.3, 美观、强大的可视化监控指标展示工具
 
 # 国内常用镜像加速服务
 
