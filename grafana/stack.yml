@@ -1,0 +1,19 @@
+# https://hub.docker.com/_/redis?tab=tags
+version: '3'
+
+services:
+  grafana:
+    image: grafana/grafana:7.1.3
+    container_name: grafana
+    hostname: grafana
+    # restart: always # 容器是否自动重启
+    ports:
+      - "9163:3000"
+    volumes:
+      - ./volumes/data:/var/lib/grafana:rw
+      - ./volumes/plugins:/var/lib/grafana/plugins:rw
+    networks:
+      - net_db
+networks:
+  net_db:
+    driver: bridge

@@ -12,10 +12,10 @@ services:
     networks:
       - net_db
     volumes:
-      - /Users/panxiaoan/work/docker/redis/redis.conf:/etc/redis/redis.conf:rw
-      - /Users/panxiaoan/work/docker/redis/data:/data:rw
+      - ./volumes/conf/redis.conf:/etc/redis/redis.conf:rw
+      - ./volumes/data:/data:rw
     command:
-      redis-server /etc/redis/redis.conf --requirepass redis --appendonly yes
+      redis-server /etc/redis/redis.conf --appendonly yes # --requirepass redis 
 networks:
   net_db:
     driver: bridge

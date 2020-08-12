@@ -6,7 +6,7 @@ services:
   mysql-8021-33060:
     image: mysql:8.0.21
     container_name: mysql-8021-33060
-    restart: always
+    # restart: always # 容器是否自动重启
     command: 
       --default-authentication-plugin=mysql_native_password
       --lower-case-table-names=1
@@ -14,10 +14,9 @@ services:
       --collation-server=utf8mb4_general_ci
       --explicit_defaults_for_timestamp=true
     volumes:
-      - /Users/panxiaoan/work/docker/mysql-8.0.21-33060/data:/var/lib/mysql # 数据
-      - /Users/panxiaoan/work/docker/mysql-8.0.21-33060/conf/my.cnf:/etc/mysql/my.cnf # 配置
-      - /Users/panxiaoan/work/docker/mysql-8.0.21-33060/mysql-files:/var/lib/mysql-files
-      # - /etc/localtime:/etc/localtime:ro
+      - ./volumes/33060/data:/var/lib/mysql # 数据
+      - ./volumes/33060/conf/my.cnf:/etc/mysql/my.cnf # 配置
+      - ./volumes/33060/mysql-files:/var/lib/mysql-files
     environment:
       TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD: root
