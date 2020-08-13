@@ -6,7 +6,7 @@ services:
     image: influxdb:1.8
     container_name: influxdb
     hostname: influxdb
-    # restart: always # 容器是否自动重启
+    restart: always
     ports:
       - 9161:8086 # Grafana select data from influxdb
       - 9162:2003 # JMeter update data

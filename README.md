@@ -9,6 +9,7 @@ Java 工程师常用镜像的 Dockerfile，方便快速搭建开发环境
   - Reids Desktop GUI: https://tableplus.com
 - Influxdb 1.8, 时序数据库
 - Grafana 7.1.3, 美观、强大的可视化监控指标展示工具
+- Mycat-server-1.6.7.5-release-20200410174409-linux, 分库分表中间件
 
 # 国内常用镜像加速服务
 

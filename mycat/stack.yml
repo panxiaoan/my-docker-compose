@@ -1,0 +1,22 @@
+# https://hub.docker.com/_/influxdb?tab=tags
+version: '3'
+
+services:
+  mycat:
+    build: .
+    container_name: mycat
+    hostname: mycat
+    restart: always
+    ports:
+      - "8066:8066"
+      - "9066:9066"
+    volumes:
+      - ./volumes/conf:/mycat/conf/:rw
+      - ./volumes/logs:/mycat/logs/:rw
+    ulimits:
+      nproc: 65535
+    networks:
+      - net_db
+networks:
+  net_db:
+    driver: bridge
