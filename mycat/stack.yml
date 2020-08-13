@@ -4,6 +4,7 @@ version: '3'
 services:
   mycat:
     build: .
+    image: mycat:1.6.7.5.20200410174409
     container_name: mycat
     hostname: mycat
     restart: always
