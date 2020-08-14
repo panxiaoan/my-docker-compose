@@ -54,7 +54,7 @@ innodb_open_files = 2048
 
 #memlock
 innodb_buffer_pool_instances=4
-innodb_buffer_pool_size = 3G
+innodb_buffer_pool_size = 4G
 innodb_log_file_size = 64M
 innodb_lock_wait_timeout = 50
 innodb_flush_log_at_trx_commit = 0
