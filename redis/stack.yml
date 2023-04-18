@@ -3,7 +3,7 @@ version: '3'
 
 services:
   redis:
-    image: redis:6.0.6
+    image: redis:6.2.6
     container_name: redis
     hostname: redis
     restart: always
