@@ -5,7 +5,7 @@
 docker ps
 
 # 进入 Redis 控制台
-docker exec -it 080c244b7d23 redis-cli
+docker exec -it redis redis-cli
 
 # 保存 key = value
 set order 1
