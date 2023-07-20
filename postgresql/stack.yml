@@ -1,0 +1,23 @@
+# https://hub.docker.com/_/redis?tab=tags
+version: '3'
+
+services:
+  database:
+    image: 'postgres:15.3'
+    container_name: postgres
+    hostname: postgres
+    restart: always
+    privileged: true
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./volumes/data:/var/lib/postgresql/data:rw
+    networks:
+      - postgres-network
+networks: 
+  postgres-network:
+    driver: bridge
