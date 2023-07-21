@@ -1,19 +1,12 @@
-# Docker Common Images
+# My Docker Compose
 
-Java 工程师常用镜像的 Dockerfile，方便快速搭建开发环境
+https://github.com/panxiaoan/my-docker-compose
 
-https://github.com/panxiaoan/docker-common-images
+我本地开发环境常用的 Docker Compose，例如：MySQL、Postgres、Redis、Mycat、Prometheus、Grafana...
 
-# 镜像构建列表
-- MySQL 8.0.21
-  - MySQL Desktop GUI：Navicat for MySQ
-- Redis 6.0.6
-  - Reids Desktop GUI: https://tableplus.com
-- Influxdb 1.8, 时序数据库
-- Grafana 7.1.3, 美观、强大的可视化监控指标展示工具
-- Mycat-server-1.6.7.5-release-20200410174409-linux, 分库分表中间件
+如果使用 macOS 建议使用 OrbStack App，相比 Docker Desktop 启动更快、资源占用更少
 
-# 国内常用镜像加速服务
+# 配置国内镜像加速服务
 
 ```shell
 cat << EOF >> /etc/docker/daemon.json
@@ -21,12 +14,11 @@ cat << EOF >> /etc/docker/daemon.json
   "debug": true,
   "experimental": true,
   "registry-mirrors": [
-    "https://hub-mirror.c.163.com",
-    "https://mirror.ccs.tencentyun.com",
-    "https://docker.mirrors.ustc.edu.cn",
-    "https://reg-mirror.qiniu.com",
-    "https://dockerhub.azk8s.cn"
-  ]
+		"https://registry.cn-hangzhou.aliyuncs.com",
+		"http://hub-mirror.c.163.com",
+		"https://registry.docker-cn.com",
+		"https://docker.mirrors.ustc.edu.cn"
+	]
 }
 EOF
 ```
