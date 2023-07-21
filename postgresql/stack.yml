@@ -1,9 +1,8 @@
-# https://hub.docker.com/_/redis?tab=tags
 version: '3'
 
 services:
-  database:
-    image: 'postgres:15.3'
+  postgres:
+    image: 'postgres:14.8'
     container_name: postgres
     hostname: postgres
     restart: always
@@ -11,8 +10,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1qazXSW@
       - POSTGRES_DB=postgres
     volumes:
       - ./volumes/data:/var/lib/postgresql/data:rw

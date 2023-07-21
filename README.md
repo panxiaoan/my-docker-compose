@@ -2,6 +2,8 @@
 
 Java 工程师常用镜像的 Dockerfile，方便快速搭建开发环境
 
+https://github.com/panxiaoan/docker-common-images
+
 # 镜像构建列表
 - MySQL 8.0.21
   - MySQL Desktop GUI：Navicat for MySQ
