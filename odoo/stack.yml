@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  odoo:
+    image: odoo:latest
+    platform: linux/amd64 # 如果是 Apple Silicon 需要指定该配置
+    container_name: odoo
+    hostname: odoo
+    restart: always
+    privileged: true
+    ports:
+      - 8069:8069
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./volumes/data:/var/lib/odoo:rw
+      - ./volumes/conf:/etc/odoo:rw
+      - ./volumes/addons:/mnt/extra-addons:rw

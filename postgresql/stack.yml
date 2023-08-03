@@ -10,13 +10,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1qazXSW@
       - POSTGRES_DB=postgres
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=1qazXSW@
     volumes:
       - ./volumes/data:/var/lib/postgresql/data:rw
-    networks:
-      - postgres-network
-networks: 
-  postgres-network:
-    driver: bridge

@@ -27,6 +27,6 @@ EOF
 2. macOS 在 Docker 控制面板中配置
 
 # 相关资料
-
+- docker 官方镜像：https://github.com/docker-library
 - docker samples: https://docs.docker.com/samples/
 - awesome-compose: https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis

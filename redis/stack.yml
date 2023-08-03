@@ -17,8 +17,3 @@ services:
       - ./volumes/data:/data:rw
     command:
       redis-server /usr/local/redis/redis.conf
-    networks:
-      - redis_network
-networks:
-  redis_network:
-    driver: bridge
