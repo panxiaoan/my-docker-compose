@@ -13,7 +13,15 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - ./volumes/conf/redis.conf:/usr/local/redis/redis.conf:rw
-      - ./volumes/data:/data:rw
+      - ./conf/redis.conf:/usr/local/redis/redis.conf
+      - ./volumes/data:/data
     command:
       redis-server /usr/local/redis/redis.conf
+    networks:
+      default: 
+        aliases:
+          - redis_net
+networks:
+  default:
+    name: mynet_default
+    external: true

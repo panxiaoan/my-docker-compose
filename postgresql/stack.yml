@@ -14,4 +14,12 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=1qazXSW@
     volumes:
-      - ./volumes/data:/var/lib/postgresql/data:rw
+      - ./volumes/data:/var/lib/postgresql/data
+    networks:
+      default: 
+        aliases:
+          - postgres_net
+networks:
+  default:
+    name: mynet_default
+    external: true

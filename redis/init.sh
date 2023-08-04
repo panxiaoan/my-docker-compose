@@ -1,5 +1,5 @@
 #!/bin/sh
 
+mkdir conf
 mkdir volumes
-mkdir volumes/conf
 mkdir volumes/data

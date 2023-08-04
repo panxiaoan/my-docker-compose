@@ -13,6 +13,14 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - ./volumes/data:/var/lib/odoo:rw
-      - ./volumes/conf:/etc/odoo:rw
-      - ./volumes/addons:/mnt/extra-addons:rw
+      - ./conf:/etc/odoo
+      - ./volumes/data:/var/lib/odoo
+      - ./volumes/addons:/mnt/extra-addons
+    networks:
+      default: 
+        aliases:
+          - odoo_net
+networks:
+  default:
+    name: mynet_default
+    external: true
