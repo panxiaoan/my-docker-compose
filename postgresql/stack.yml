@@ -5,7 +5,7 @@ services:
     image: 'postgres:14.8'
     container_name: postgres
     hostname: postgres
-    restart: always
+    restart: no # always | no | on-failure
     privileged: true
     ports:
       - 5432:5432

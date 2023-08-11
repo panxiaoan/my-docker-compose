@@ -6,7 +6,7 @@ services:
     platform: linux/amd64 # 如果是 Apple Silicon 需要指定该配置
     container_name: odoo
     hostname: odoo
-    restart: always
+    restart: no # always | no | on-failure
     privileged: true
     ports:
       - 8069:8069

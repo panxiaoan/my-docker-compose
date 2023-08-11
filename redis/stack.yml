@@ -7,7 +7,7 @@ services:
     container_name: redis
     hostname: redis
     restart: always
-    privileged: true
+    privileged: true # always | no | on-failure
     ports:
       - 6379:6379
     environment:
