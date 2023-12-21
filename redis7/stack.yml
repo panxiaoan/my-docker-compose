@@ -3,9 +3,9 @@ version: '3'
 
 services:
   redis:
-    image: redis:latest
-    container_name: redis
-    hostname: redis
+    image: redis:7.2.3
+    container_name: redis7
+    hostname: redis7
     restart: always
     privileged: true # always | no | on-failure
     ports:
@@ -20,7 +20,7 @@ services:
     networks:
       default: 
         aliases:
-          - redis_net
+          - redis7_net
 networks:
   default:
     name: mynet_default

@@ -9,7 +9,7 @@ services:
     restart: no # always | no | on-failure
     privileged: true
     ports:
-      - 8069:8069
+      - 8068:8069
     environment:
       - TZ=Asia/Shanghai
     volumes:

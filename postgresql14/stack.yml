@@ -3,8 +3,8 @@ version: '3'
 services:
   postgres:
     image: 'postgres:14.8'
-    container_name: postgres
-    hostname: postgres
+    container_name: postgres14
+    hostname: postgres14
     restart: no # always | no | on-failure
     privileged: true
     ports:
@@ -18,7 +18,7 @@ services:
     networks:
       default: 
         aliases:
-          - postgres_net
+          - postgres14_net
 networks:
   default:
     name: mynet_default
