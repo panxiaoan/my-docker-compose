@@ -1,5 +1,7 @@
 # 普隆米修斯 Prometheus 简介
 
+![架构](../asserts/prometheus.png)
+
 Prometheus 是由 SoundCloud 开发的开源监控报警系统和时序列数据库(TSDB)。
 
 - 官网：https://prometheus.io
@@ -35,8 +37,12 @@ Prometheus 是由 SoundCloud 开发的开源监控报警系统和时序列数据
 - PushGateway 支持 Client 主动推送 metrics 到 PushGateway，而 Prometheus 只是定时去 Gateway 上抓取数据。
 - Alertmanager 是独立于 Prometheus 的一个组件，可以支持 Prometheus 的查询语句，提供十分灵活的报警方式。
 
-# 三大套件
+# 主要模块
 
-- Server 主要负责数据采集和存储，提供 PromQL 查询语言的支持。
-- Alertmanager 警告管理器，用来进行报警。
-- Push Gateway 支持临时性 Job 主动推送指标的中间网关。
+Server，Exporters，Pushgateway，PromQL，Alertmanager，WebUI等，主要逻辑如下：
+
+- Prometheus server 定期从静态配置的 targets 或者服务发现的 targets 拉取数据。
+- 当新拉取的数据大于配置内存缓存区时，Prometheus 会将数据持久化到磁盘（如果使用 remote storage 将持久化到云端）。
+- Prometheus 配置 rules，然后定时查询数据，当条件触发时，会将 alert 推送到配置的 Alertmanager。
+- Alertmanager 收到警告时，会根据配置，聚合、去重、降噪等操作，最后发送警告。
+- 可以使用 API，Prometheus Console 或者 Grafana 查询和聚合数据。

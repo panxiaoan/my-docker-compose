@@ -2,10 +2,10 @@ version: '3'
 
 services:
   odoo:
-    image: odoo:latest
+    image: odoo:16
     platform: linux/amd64 # 如果是 Apple Silicon 需要指定该配置
-    container_name: odoo
-    hostname: odoo
+    container_name: odoo16
+    hostname: odoo16
     restart: no # always | no | on-failure
     privileged: true
     ports:
@@ -19,7 +19,7 @@ services:
     networks:
       default: 
         aliases:
-          - odoo_net
+          - odoo16_net
 networks:
   default:
     name: mynet_default
