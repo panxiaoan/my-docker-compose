@@ -2,13 +2,13 @@ version: '3'
 
 services:
   postgres:
-    image: 'postgres:14.8'
+    image: 'postgres:14.10'
     container_name: postgres14
     hostname: postgres14
     restart: no # always | no | on-failure
     privileged: true
     ports:
-      - 5432:5432
+      - 5431:5432
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=root
