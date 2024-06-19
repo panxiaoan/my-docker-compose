@@ -3,9 +3,7 @@ version: '3'
 services:
   portainer:
     image: portainer/portainer-ce:latest
-    # platform: linux/amd64 # 如果是 Apple Silicon 需要指定该配置
     container_name: portainer
-    hostname: portainer
     command: -H unix:///var/run/docker.sock
     restart: always # always | no | on-failure
     privileged: true
@@ -16,11 +14,3 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./volumes/data:/data
-    networks:
-      default: 
-        aliases:
-          - portainer_net
-networks:
-  default:
-    name: mynet_default
-    external: true
