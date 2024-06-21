@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.45.5
+    container_name: prometheus
+    hostname: prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./volumes/prometheus/data:/prometheus
+    user: admin
+    
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    hostname: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./volumes/grafana/data:/var/lib/grafana
+      - ./volumes/grafana/provisioning:/etc/grafana/provisioning
+    user: admin
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=1qazXSW@
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    hostname: node_exporter
+    restart: always
+    ports:
+      - 9100:9100
+
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    hostname: cadvisor
+    restart: always
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 9080:8080
