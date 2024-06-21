@@ -11,7 +11,9 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./volumes/prometheus/data:/prometheus
-    user: admin
+    environment:
+      - BASIC_AUTH_USER=admin # 设置HTTP基本认证用户名
+      - BASIC_AUTH_PASSWORD=1qazXSW@ # 设置HTTP基本认证密码
     
   grafana:
     image: grafana/grafana:latest
@@ -25,7 +27,8 @@ services:
       - ./volumes/grafana/provisioning:/etc/grafana/provisioning
     user: admin
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=1qazXSW@
+      - GF_SECURITY_ADMIN_USER=admin # 设置管理员用户名
+      - GF_SECURITY_ADMIN_PASSWORD=1qazXSW@ # 设置管理员密码
 
   node-exporter:
     image: prom/node-exporter:latest
