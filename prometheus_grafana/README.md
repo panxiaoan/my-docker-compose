@@ -50,3 +50,45 @@ Server，Exporters，Pushgateway，PromQL，Alertmanager，WebUI等，主要逻�
 # Grafana
 
 官方 Dashboard：https://grafana.com/grafana/dashboards
+
+# Spring Boot 2.6 加入 Prometheus 监控
+
+## 引入对应的 Starter
+
+```xml
+    <!-- Prometheus 监控 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus -->
+    <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-registry-prometheus</artifactId>
+        <version>1.6.13</version>
+    </dependency>
+```
+
+### 配置 yml 配置文件
+```yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+```
+
+### 配置 prometheus.yml
+```yml
+  ######################## Spring Boot App #############################
+  - job_name: 'app'
+    static_configs:
+      - targets: ['192.168.1.253:8086']
+    metrics_path: '/wms/actuator/prometheus' # 其中 wms 使用配置了 server.servlet.context-path: /wms
+```
