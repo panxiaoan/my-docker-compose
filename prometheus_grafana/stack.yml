@@ -25,6 +25,7 @@ services:
     volumes:
       - ./volumes/grafana/data:/var/lib/grafana
       - ./volumes/grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana.ini:/etc/grafana/grafana.ini # 自定义配置文件挂载
     environment:
       - GF_SECURITY_ADMIN_USER=admin # 设置管理员用户名
       - GF_SECURITY_ADMIN_PASSWORD=1qazXSW@ # 设置管理员密码
