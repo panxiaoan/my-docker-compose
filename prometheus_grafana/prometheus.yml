@@ -23,3 +23,9 @@ scrape_configs:
     static_configs:
       - targets: ['192.168.1.253:9080']
     metrics_path: '/metrics'
+
+  ######################## Spring Boot App #############################
+  - job_name: 'app'
+    static_configs:
+      - targets: ['192.168.1.253:8086/wms'] # 例如: ['localhost:8081']
+    metrics_path: '/actuator/prometheus'
