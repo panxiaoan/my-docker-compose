@@ -46,3 +46,7 @@ Server，Exporters，Pushgateway，PromQL，Alertmanager，WebUI等，主要逻�
 - Prometheus 配置 rules，然后定时查询数据，当条件触发时，会将 alert 推送到配置的 Alertmanager。
 - Alertmanager 收到警告时，会根据配置，聚合、去重、降噪等操作，最后发送警告。
 - 可以使用 API，Prometheus Console 或者 Grafana 查询和聚合数据。
+
+# Grafana
+
+官方 Dashboard：https://grafana.com/grafana/dashboards
