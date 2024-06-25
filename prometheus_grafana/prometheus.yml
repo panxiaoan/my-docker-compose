@@ -29,3 +29,33 @@ scrape_configs:
     static_configs:
       - targets: ['192.168.1.253:8086']
     metrics_path: '/wms/actuator/prometheus'
+  
+  - job_name: 'wms-ga-app'
+    static_configs:
+      - targets: ['192.168.1.253:8085']
+    metrics_path: '/wmsga/actuator/prometheus'
+
+  - job_name: 'wms-med-app'
+    static_configs:
+      - targets: ['192.168.1.253:8088']
+    metrics_path: '/wmsmed/actuator/prometheus'
+
+  - job_name: 'wes-app'
+    static_configs:
+      - targets: ['192.168.1.253:8010']
+    metrics_path: '/wes/actuator/prometheus'
+
+  - job_name: 'wcs-app'
+    static_configs:
+      - targets: ['192.168.1.253:8089']
+    metrics_path: '/wcs/actuator/prometheus'
+
+  - job_name: 'les-app'
+    static_configs:
+      - targets: ['192.168.1.253:8087']
+    metrics_path: '/les/actuator/prometheus'
+
+  - job_name: 'pfep-app'
+    static_configs:
+      - targets: ['192.168.1.253:8084']
+    metrics_path: '/pfep/actuator/prometheus'

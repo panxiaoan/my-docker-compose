@@ -1,3 +1,5 @@
+#!/bin/sh
+
 mkdir -p ./volumes/prometheus/data
 mkdir -p ./volumes/grafana/data
 mkdir -p ./volumes/grafana/provisioning
