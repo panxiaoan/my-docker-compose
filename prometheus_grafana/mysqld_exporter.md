@@ -41,6 +41,8 @@ systemctl restart mysqld_exporter.service
 systemctl status mysqld_exporter.service
 
 # 配置端口
+/sbin/iptables -L -n
+
 firewall-cmd --zone=public --add-port=9104/tcp --permanent
 firewall-cmd --reload
 

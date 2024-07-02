@@ -40,6 +40,8 @@ systemctl restart node_exporter.service
 systemctl status node_exporter.service
 
 # 配置端口
+/sbin/iptables -L -n
+
 firewall-cmd --zone=public --add-port=9100/tcp --permanent
 firewall-cmd --reload
 
