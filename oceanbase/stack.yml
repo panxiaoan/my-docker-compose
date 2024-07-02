@@ -14,11 +14,3 @@ services:
       - TZ=Asia/Shanghai # 设置时区，可根据需要调整
     volumes:
       - ./volumes/data:/home/oceanbase/store # 挂载数据卷，用于存储OceanBase数据
-    networks:
-      default: 
-        aliases:
-          - oceanbase_net
-networks:
-  default:
-    name: mynet_default
-    external: true
