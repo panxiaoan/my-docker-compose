@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  oceanbase-ce:
+    image: oceanbase/oceanbase-ce:latest # 使用OceanBase社区版的最新镜像，请根据实际情况替换版本号
+    container_name: oceanbase-ce-mini
+    ports:
+      - "2881:2881" # OBServer RPC端口
+      - "2882:2882" # SQL客户端访问端口
+      - "2883:5000" # OBProxy端口，如果需要的话
+    environment:
+      - ROOT_PASSWORD=root # 设置root用户的密码
+      - MINI_MODE=1 # 容器规格 0-最大规格实例, 1-部署 mini 的独立实例
+      - TZ=Asia/Shanghai # 设置时区，可根据需要调整
+    volumes:
+      - ./volumes/data:/home/oceanbase/store # 挂载数据卷，用于存储OceanBase数据
+    networks:
+      default: 
+        aliases:
+          - oceanbase_net
+networks:
+  default:
+    name: mynet_default
+    external: true
