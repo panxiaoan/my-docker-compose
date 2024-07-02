@@ -4,14 +4,8 @@ services:
   oceanbase-ce:
     image: oceanbase/oceanbase-ce:latest # 使用OceanBase社区版的最新镜像，请根据实际情况替换版本号
     container_name: oceanbase
-    deploy:
-      resources:
-        limits:
-          cpus: '4'    # 限制CPU使用为0.5个核心
-          memory: 7000M   # 限制内存使用为512MB
-        reservations:
-          cpus: '2'  # 保证至少有0.25个核心可用
-          memory: 6300M   # 保证至少有256MB内存可用
+    cpus: 4
+    mem_limit: 7000m
     ports:
       - "2881:2881" # OBServer RPC端口
       - "2882:2882" # SQL客户端访问端口
