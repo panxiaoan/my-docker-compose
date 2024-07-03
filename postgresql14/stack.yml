@@ -6,7 +6,7 @@ services:
     container_name: postgres14
     hostname: postgres14
     restart: no # always | no | on-failure
-    privileged: true
+    privileged: true # 赋予容器与宿主机同等权限
     ports:
       - 5431:5432
     environment:
