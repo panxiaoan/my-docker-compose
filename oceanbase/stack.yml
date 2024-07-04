@@ -16,12 +16,12 @@ services:
           cpus: '2'
           memory: 6500M
     ports:
-      - "2881:2881" # OBServer RPC端口
-      - "2882:2882" # SQL客户端访问端口
+      - "2881:2881" # SQL客户端访问端口
+      - "2882:2882" # OBServer RPC端口
       - "2883:5000" # OBProxy端口，如果需要的话
     environment:
-      - MINI_MODE=1 # 容器规格 0-最大规格实例, 1-部署 mini 的独立实例
-      - ROOT_PASSWORD=root # 设置root用户的密码
+      - MINI_MODE=0 # 容器规格 0-最大规格实例, 1-部署 mini 的独立实例
+      - ROOT_PASSWORD=admin # 设置root用户的密码
       - TZ=Asia/Shanghai # 设置时区，可根据需要调整
     volumes:
       - ./volumes/data:/root/ob:z  # 挂载数据卷，用于持久化数据
