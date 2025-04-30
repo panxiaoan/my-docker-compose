@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  hazelcast-mc5:
+    image: hazelcast/management-center:5.4.1
+    container_name: hazelcastmc5
+    hostname: hazelcastmc5
+    restart: no
+    ports:
+      - "5700:8080"
+    environment:
+      - MC_DEFAULT_CLUSTER=dev
+      - TZ=Asia/Shanghai
+      #- MC_DEFAULT_CLUSTER_MEMBERS=hazelcast
+    networks:
+      default: 
+        aliases:
+          - hazelcastmc5_net
+networks:
+  default:
+    name: mynet_default
+    external: true
