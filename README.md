@@ -7,8 +7,11 @@ Java 开发者常用的容器：MySQL、PostgreSQL、Redis、Mycat、Prometheus�
 *已准备好的容器：*
 
 * redis
+* mysql
 * postgressql
 * odoo
+* prometheus
+* grafana
 
 *推荐 OrbStack*
 
