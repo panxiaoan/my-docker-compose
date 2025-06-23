@@ -16,7 +16,7 @@ services:
       - BASIC_AUTH_PASSWORD=1qazXSW@ # 设置HTTP基本认证密码
     
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:v10.4.5
     container_name: grafana
     hostname: grafana
     restart: always
