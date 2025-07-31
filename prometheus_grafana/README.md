@@ -51,6 +51,13 @@ Server，Exporters，Pushgateway，PromQL，Alertmanager，WebUI等，主要逻�
 
 官方 Dashboard：https://grafana.com/grafana/dashboards
 
+## 常用 Dashbord
+
+- 服务器：https://grafana.com/grafana/dashboards/16098-node-exporter-dashboard-20240520-job/
+- Springboot：https://grafana.com/grafana/dashboards/12900-springboot-apm-dashboard/
+- MySQL: https://grafana.com/grafana/dashboards/17320-1-mysqld-exporter-dashboard/
+- Docker: https://grafana.com/grafana/dashboards/193-docker-monitoring/
+
 # Spring Boot 2.6 加入 Prometheus 监控
 
 ## 引入对应的 Starter
@@ -122,3 +129,81 @@ management:
       - targets: ['192.168.1.253:8084']
     metrics_path: '/pfep/actuator/prometheus'
 ```
+
+# Nginx 配置
+
+```nginx
+location /grafana/ {
+    proxy_pass http://192.168.1.253:3000/grafana;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    #proxy_cookie_path / /grafana/;
+    #rewrite ^/grafana/(.*)$ /$1 break;
+}
+```
+
+## CentOS 6 中配置 mysqld_exporter 随机自动启动
+
+- 创建 mysqld_exporter 服务脚本:`vim /etc/init.d/mysqld_exporter`
+
+```bash
+#!/bin/bash
+# chkconfig: 345 90 10
+# description: mysqld_exporter for Prometheus
+
+DAEMON="/home/apps/prometheus/mysqld_exporter/mysqld_exporter"
+ARGS="--config.my-cnf=/home/apps/prometheus/mysqld_exporter/mysqld_exporter.cnf"
+PIDFILE="/var/run/mysqld_exporter.pid"
+
+start() {
+    echo "Starting mysqld_exporter..."
+    nohup $DAEMON $ARGS > mysqld_exporter.log 2>&1 &
+    echo $! > $PIDFILE
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && touch /var/lock/subsys/mysqld_exporter
+    return $RETVAL
+}
+
+stop() {
+    echo "Stopping mysqld_exporter..."
+    PID=$(cat $PIDFILE)
+    kill $PID
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && rm -f /var/lock/subsys/mysqld_exporter /var/run/mysqld_exporter.pid
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    status)
+        status $DAEMON
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+esac
+
+exit 0
+```
+
+- 授权：`chmod +x /etc/init.d/mysqld_exporter`
+- 添加服务到 chkconfig: `chkconfig --add mysqld_exporter`
+- 设置开机自动启动：`chkconfig mysqld_exporter on`
+- 启动服务：`service mysqld_exporter start | stop | restart`
+- 检查服务状态：`service mysqld_exporter status`

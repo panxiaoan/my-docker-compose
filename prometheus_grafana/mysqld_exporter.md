@@ -20,7 +20,16 @@ After=network.target
 
 [Service]
 User=root
-ExecStart=/home/apps/prometheus/mysqld_exporter/mysqld_exporter --config.my-cnf=/home/apps/prometheus/mysqld_exporter/mysqld_exporter.cnf
+ExecStart=/home/apps/prometheus/mysqld_exporter/mysqld_exporter \
+  --config.my-cnf=/home/apps/prometheus/mysqld_exporter/mysqld_exporter.cnf \
+  --collect.info_schema.processlist \
+  --collect.global_status \
+  --collect.global_variables \
+  --collect.slave_status \
+  --collect.engine_innodb_status \
+  --collect.info_schema.innodb_metrics \
+  --collect.info_schema.tables \
+  --collect.info_schema.tables.databases=*
 Restart=always
 
 [Install]
@@ -34,11 +43,15 @@ sudo chmod +x /etc/systemd/system/mysqld_exporter.service
 systemctl daemon-reload
 
 # 配置开机启动
+systemctl daemon-reload
 systemctl enable mysqld_exporter.service
 systemctl start mysqld_exporter.service
 systemctl stop mysqld_exporter.service
 systemctl restart mysqld_exporter.service
 systemctl status mysqld_exporter.service
+
+# 查看日志
+journalctl -u mysqld_exporter -f
 
 # 配置端口
 /sbin/iptables -L -n
