@@ -15,7 +15,8 @@ scrape_configs:
 
   ######################## MySQL #############################
   - job_name: 'mysqld_exporter'
-    scrape_timeout: 30s
+    scrape_interval: 60s
+    scrape_timeout: 60s
     static_configs:
       - targets: ['192.168.1.250:9104', '192.168.1.251:9104']
 

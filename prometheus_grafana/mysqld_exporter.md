@@ -22,11 +22,11 @@ After=network.target
 User=root
 ExecStart=/home/apps/prometheus/mysqld_exporter/mysqld_exporter \
   --config.my-cnf=/home/apps/prometheus/mysqld_exporter/mysqld_exporter.cnf \
-  --collect.info_schema.processlist \
   --collect.global_status \
   --collect.global_variables \
   --collect.slave_status \
   --collect.engine_innodb_status \
+  --collect.info_schema.processlist \
   --collect.info_schema.innodb_metrics \
   --collect.info_schema.tables \
   --collect.info_schema.tables.databases=*
@@ -68,6 +68,10 @@ http://localhost:9104/metrics
 ```bash
 # 在 CentOS 6 中设置 mysqld_exporter 开机自动启动
 
+mkdir -p /var/log/mysqld_exporter
+chown root:root /var/log/mysqld_exporter
+chmod 755 /var/log/mysqld_exporter
+
 sudo vim /etc/init.d/mysqld_exporter
 
 #!/bin/bash
@@ -75,12 +79,21 @@ sudo vim /etc/init.d/mysqld_exporter
 # description: mysqld_exporter for Prometheus
 
 DAEMON="/home/apps/prometheus/mysqld_exporter/mysqld_exporter"
-ARGS="--config.my-cnf=/home/apps/prometheus/mysqld_exporter/mysqld_exporter.cnf"
+ARGS="--config.my-cnf=/home/apps/prometheus/mysqld_exporter/mysqld_exporter.cnf \
+  --config.my-cnf=/home/apps/prometheus/mysqld_exporter/mysqld_exporter.cnf \
+  --collect.global_status \
+  --collect.global_variables \
+  --collect.slave_status \
+  --collect.engine_innodb_status \
+  --collect.info_schema.processlist \
+  --collect.info_schema.innodb_metrics \
+  --collect.info_schema.tables \
+  --collect.info_schema.tables.databases=*"
 PIDFILE="/var/run/mysqld_exporter.pid"
 
 start() {
     echo "Starting mysqld_exporter..."
-    nohup $DAEMON $ARGS > mysqld_exporter.log 2>&1 &
+    nohup $DAEMON $ARGS > /var/log/mysqld_exporter/mysqld_exporter.log 2>&1 &
     echo $! > $PIDFILE
     RETVAL=$?
     echo
@@ -133,6 +146,9 @@ service iptables restart
 sudo service mysqld_exporter start
 sudo service mysqld_exporter stop
 sudo service mysqld_exporter restart
+
+# 查看日志
+tail -200f /var/log/mysqld_exporter/mysqld_exporter.log
 
 # 验证
 http://192.168.1.251:9104/metrics

@@ -66,7 +66,7 @@ ARGS=""
 
 start() {
     echo "Starting Node Exporter..."
-    nohup $DAEMON > node_exporter.log 2>&1 &
+    nohup $DAEMON > /var/log/node_exporter/node_exporter.log 2>&1 &
     echo $! > $PIDFILE
     RETVAL=$?
     echo
