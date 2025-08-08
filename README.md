@@ -2,16 +2,19 @@
 
 https://github.com/panxiaoan/my-docker-compose
 
-Java 开发者常用的容器：MySQL、PostgreSQL、Redis、Mycat、Prometheus、Grafana...
+Java 开发者常用的容器：MySQL、PostgreSQL、Redis、Prometheus、Grafana...
 
 *已准备好的容器：*
 
 * redis
 * mysql
-* postgressql
-* odoo
+* postgres 15、17
+* oceanbase
 * prometheus
 * grafana
+* portainer
+* odoo 16、17、18
+* hazelcast-management-center
 
 *推荐 OrbStack*
 
@@ -22,13 +25,10 @@ OrbStack 是 macOS 中 Docker App，相比 Docker Desktop App 启动更快、资
 ```shell
 cat << EOF >> /etc/docker/daemon.json
 {
-  "ipv6" : false,
   "registry-mirrors" : [
-    "https://dockerproxy.com",
-    "https://hub-mirror.c.163.com",
-    "https://mirror.baidubce.com",
-    "https://ccr.ccs.tencentyun.com"
-  ]
+    "https:\/\/docker.m.daocloud.io"
+  ],
+  "ipv6" : false
 }
 EOF
 ```
@@ -47,4 +47,4 @@ docker network create mynet_default
 # 相关资料
 - docker 官方镜像：https://github.com/docker-library
 - docker samples: https://docs.docker.com/samples/
-- awesome-compose: https://github.com/docker/awesome-compose/tree/master/nginx-nodejs-redis
+- awesome-compose: https://github.com/docker/awesome-compose

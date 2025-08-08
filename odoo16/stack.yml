@@ -7,7 +7,7 @@ services:
     container_name: odoo16
     hostname: odoo16
     restart: no # always | no | on-failure
-    privileged: true
+    privileged: false
     ports:
       - 8068:8069
     environment:

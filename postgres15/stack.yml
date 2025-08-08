@@ -1,14 +1,14 @@
 version: '3'
 
 services:
-  postgres:
-    image: 'postgres:14.10'
-    container_name: postgres14
-    hostname: postgres14
+  postgres15:
+    image: 'postgres:15.5'
+    container_name: postgres15
+    hostname: postgres15
     restart: no # always | no | on-failure
-    privileged: true # 赋予容器与宿主机同等权限
+    privileged: false
     ports:
-      - 5431:5432
+      - 5432:5432
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=root
@@ -18,7 +18,7 @@ services:
     networks:
       default: 
         aliases:
-          - postgres14_net
+          - postgres15_net
 networks:
   default:
     name: mynet_default

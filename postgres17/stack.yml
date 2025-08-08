@@ -1,0 +1,39 @@
+services:
+  postgres17:
+    image: postgres:17.5-alpine3.22 # https://github.com/docker-library/docs/blob/master/postgres/README.md
+    container_name: postgres17
+    hostname: postgres17
+    # network_mode: host # 设置网络模式为主机模式(端口映射无效)
+    restart: always # always | no | on-failure
+    privileged: false
+    ports:
+      - 54320:5432
+    shm_size: 300MB
+    command: >
+      -c shared_buffers=256MB
+      -c effective_cache_size=1GB
+      -c work_mem=16MB
+      -c fsync=off
+      -c synchronous_commit=off
+    environment:
+      - TZ=Asia/Shanghai
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=1qaz<LP_
+      - POSTGRES_INITDB_ARGS=--encoding=UTF8 --locale=C.UTF-8
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./volumes/data:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"
+    networks:
+      default: 
+        aliases:
+          - postgres17_net
+networks:
+  default:
+    name: mynet_default
+    external: true

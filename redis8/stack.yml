@@ -1,0 +1,30 @@
+services:
+  redis8:
+    image: redis:8.0.3-alpine3.21 # https://github.com/docker-library/docs/blob/master/redis/README.md
+    container_name: redis8
+    hostname: redis8
+    # network_mode: host # 设置网络模式为主机模式(端口映射无效)
+    restart: always # always | no | on-failure
+    privileged: false
+    ports:
+      - 63790:6379
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./volumes/data:/data
+    command:
+      redis-server /usr/local/etc/redis/redis.conf --loglevel warning
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"
+    networks:
+      default: 
+        aliases:
+          - redis8_net
+networks:
+  default:
+    name: mynet_default
+    external: true

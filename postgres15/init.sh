@@ -8,10 +8,4 @@ else
 fi
 
 mkdir volumes
-mkdir volumes/data
-mkdir volumes/addons
-
 chmod a+x volumes
-
-mkdir conf
-chmod a+x conf
