@@ -1,0 +1,34 @@
+services:
+  mysql8:
+    image: mysql:8.4.6 # https://github.com/docker-library/docs/blob/master/mysql/README.md
+    container_name: mysql8
+    hostname: mysql8
+    # network_mode: host # 设置网络模式为主机模式(端口映射无效)
+    restart: always # 容器是否自动重启, always | no | on-failure
+    privileged: false
+    command: 
+      --mysql_native_password=on
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --explicit_defaults_for_timestamp=true
+      --lower-case-table-names=1
+      --transaction-isolation=Read-Committed
+      --sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+      --innodb_buffer_pool_size=256m
+      --innodb_redo_log_capacity=256m
+      --max_allowed_packet=128m
+      --innodb_flush_log_at_trx_commit=2  # 权衡一致性与性能
+    volumes:
+      - ./volumes/data:/var/lib/mysql # 数据
+      - ./volumes/conf/:/etc/mysql/conf.d # 配置
+      - ./volumes/mysql-files:/var/lib/mysql-files
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 1qaz<LP_
+    ports:
+      - 33060:3306
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "512k"
+        max-file: "5"

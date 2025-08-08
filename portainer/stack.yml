@@ -6,7 +6,7 @@ services:
     container_name: portainer
     command: -H unix:///var/run/docker.sock
     restart: always # always | no | on-failure
-    privileged: true
+    privileged: false
     ports:
       - 9444:9000
     environment:
