@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  odoo:
+  odoo18:
     image: odoo:18
     platform: linux/amd64 # 如果是 Apple Silicon 需要指定该配置
     container_name: odoo18

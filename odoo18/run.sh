@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker-compose -f stack.yml up
+docker-compose -f stack.yml up -d
