@@ -14,8 +14,8 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ./conf:/etc/odoo
-      - ../../docker-volumes/odoo18/data:/var/lib/odoo
-      - ../../docker-volumes/odoo18/addons:/mnt/extra-addons
+      - ../../my-docker-volumes/odoo18/data:/var/lib/odoo
+      - ../../my-docker-volumes/odoo18/addons:/mnt/extra-addons
     networks:
       default: 
         aliases:

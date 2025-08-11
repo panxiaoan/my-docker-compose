@@ -7,12 +7,12 @@ else
     docker network create mynet_default
 fi
 
-mkdir ../../docker-volumes
-mkdir ../../docker-volumes/odoo18
-mkdir ../../docker-volumes/odoo18/data
-mkdir ../../docker-volumes/odoo18/addons
+mkdir ../../my-docker-volumes
+mkdir ../../my-docker-volumes/odoo18
+mkdir ../../my-docker-volumes/odoo18/data
+mkdir ../../my-docker-volumes/odoo18/addons
 
-chmod a+x ../../docker-volumes/odoo18
+chmod a+x ../../my-docker-volumes/odoo18
 
 mkdir conf
 chmod a+x conf

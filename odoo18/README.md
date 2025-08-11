@@ -11,7 +11,7 @@
 - 容器启动时，出现数据库初始化错误
 > Database odoo not initialized, you can force it with `-i base`
 
-```
+```bash
 # 进入容器命令行，执行初始化数据库命令
 odoo -i base -d odoo18 --stop-after-init
 ```
