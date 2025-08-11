@@ -20,6 +20,8 @@ Java 开发者常用的容器：MySQL、PostgreSQL、Redis、Prometheus、Grafan
 
 OrbStack 是 macOS 中 Docker App，相比 Docker Desktop App 启动更快、资源占用更少。详情官网了解 OrbStack: https://orbstack.dev
 
+![OrbStack](asserts/orbstack_monitor.png)
+
 ## 配置国内镜像加速服务
 
 ```shell
