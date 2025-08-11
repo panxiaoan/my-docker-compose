@@ -6,7 +6,3 @@ else
     echo "Creating network 'mynet_default'..."
     docker network create mynet_default
 fi
-
-mkdir volumes
-
-chmod a+x volumes

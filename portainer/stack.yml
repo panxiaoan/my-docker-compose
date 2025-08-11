@@ -13,4 +13,4 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./volumes/data:/data
+      - .../../docker-volumes/data:/data

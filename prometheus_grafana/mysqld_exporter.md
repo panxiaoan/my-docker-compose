@@ -28,8 +28,7 @@ ExecStart=/home/apps/prometheus/mysqld_exporter/mysqld_exporter \
   --collect.engine_innodb_status \
   --collect.info_schema.processlist \
   --collect.info_schema.innodb_metrics \
-  --collect.info_schema.tables \
-  --collect.info_schema.tables.databases=*
+  --collect.info_schema.tables
 Restart=always
 
 [Install]

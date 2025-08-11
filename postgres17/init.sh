@@ -7,5 +7,8 @@ else
     docker network create mynet_default
 fi
 
-mkdir volumes
-chmod a+x volumes
+mkdir ../../my-docker-volumes
+mkdir ../../my-docker-volumes/postgres17
+mkdir ../../my-docker-volumes/postgres17/data
+chmod a+x ../../my-docker-volumes
+chmod a+x ../../my-docker-volumes/postgres17

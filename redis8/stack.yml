@@ -12,7 +12,7 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./volumes/data:/data
+      - ../../my-docker-volumes/redis8/data:/data
     command:
       redis-server /usr/local/etc/redis/redis.conf --loglevel warning
     logging:

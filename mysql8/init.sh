@@ -7,6 +7,10 @@ else
     docker network create mynet_default
 fi
 
-mkdir volumes
-
-chmod a+x volumes
+mkdir ../../my-docker-volumes
+mkdir ../../my-docker-volumes/mysql8
+mkdir ../../my-docker-volumes/mysql8/data
+mkdir ../../my-docker-volumes/mysql8/conf
+mkdir ../../my-docker-volumes/mysql8/mysql-files
+chmod a+x ../../my-docker-volumes
+chmod a+x ../../my-docker-volumes/mysql8

@@ -10,5 +10,8 @@ fi
 mkdir conf
 chmod a+x conf
 
-mkdir volumes
-chmod a+x volumes
+mkdir ../../my-docker-volumes
+mkdir ../../my-docker-volumes/redis8
+mkdir ../../my-docker-volumes/redis8/data
+chmod a+x ../../my-docker-volumes
+chmod a+x ../../my-docker-volumes/redis8

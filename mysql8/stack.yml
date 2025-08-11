@@ -31,9 +31,9 @@ services:
       --skip_name_resolve
       --performance_schema=ON
     volumes:
-      - ./volumes/data:/var/lib/mysql # 数据
-      - ./volumes/conf/:/etc/mysql/conf.d # 配置
-      - ./volumes/mysql-files:/var/lib/mysql-files
+      - ../../my-docker-volumes/mysql8/data:/var/lib/mysql # 数据
+      - ../../my-docker-volumes/mysql8/conf/:/etc/mysql/conf.d # 配置
+      - ../../my-docker-volumes/mysql8/mysql-files:/var/lib/mysql-files
     environment:
       TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD: 1qaz<LP_

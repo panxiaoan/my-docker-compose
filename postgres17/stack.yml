@@ -23,7 +23,7 @@ services:
       - POSTGRES_INITDB_ARGS=--encoding=UTF8 --locale=C.UTF-8
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - ./volumes/data:/var/lib/postgresql/data
+      - ../../my-docker-volumes/postgres17/data:/var/lib/postgresql/data
     logging:
       driver: "json-file"
       options:
