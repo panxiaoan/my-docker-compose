@@ -7,6 +7,7 @@ else
     docker network create mynet_default
 fi
 
+mkdir ../../docker-volumes
 mkdir ../../docker-volumes/odoo18
 mkdir ../../docker-volumes/odoo18/data
 mkdir ../../docker-volumes/odoo18/addons
