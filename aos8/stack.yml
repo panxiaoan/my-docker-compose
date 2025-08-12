@@ -1,0 +1,40 @@
+services:
+  aos8:
+    image: axelor/aos-ce:v8.4.3
+    container_name: aos8
+    hostname: aos8
+    restart: no # always | no | on-failure
+    privileged: false
+    ports:
+      - 7080:8080
+    environment:
+      - TZ=Asia/Shanghai
+      - PGHOST=postgres17_net
+      - PGPORT=5432
+      - PGUSER=root
+      - PGPASSWORD=1qaz<LP_
+      - PGDATABASE=axelor_843
+      - DEV_MODE=true
+      - APP_DEMO_DATA=true
+      - JAVA_XMX=4096m
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 1800s
+    volumes:
+      - ../../my-docker-volumes/aos8/data:/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"
+    networks:
+      default: 
+        aliases:
+          - aos8_net
+networks:
+  default:
+    name: mynet_default
+    external: true

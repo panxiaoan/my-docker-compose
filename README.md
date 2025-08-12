@@ -8,12 +8,13 @@ Java 开发者常用的容器：MySQL、PostgreSQL、Redis、Prometheus、Grafan
 
 * redis
 * mysql
-* postgres 15、17
+* postgres
 * oceanbase
 * prometheus
 * grafana
 * portainer
-* odoo 16、17、18
+* odoo erp
+* aos erp(axelor open suite)
 * hazelcast-management-center
 
 *推荐 OrbStack*

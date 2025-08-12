@@ -1,9 +1,7 @@
-version: '3'
-
 services:
   odoo18:
     image: odoo:18
-    platform: linux/amd64 # 如果是 Apple Silicon 需要指定该配置
+    #platform: linux/amd64 # 如果是 Apple Silicon 需要指定该配置
     container_name: odoo18
     hostname: odoo18
     restart: no # always | no | on-failure
@@ -16,6 +14,11 @@ services:
       - ./conf:/etc/odoo
       - ../../my-docker-volumes/odoo18/data:/var/lib/odoo
       - ../../my-docker-volumes/odoo18/addons:/mnt/extra-addons
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"
     networks:
       default: 
         aliases:
