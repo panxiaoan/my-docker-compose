@@ -1,10 +1,10 @@
 #!/bin/sh
 
-if docker network inspect mynet_default >/dev/null 2>&1; then
-    echo "Network 'mynet_default' already exists."
+if docker network inspect docker_default_net >/dev/null 2>&1; then
+    echo "Network 'docker_default_net' already exists."
 else
-    echo "Creating network 'mynet_default'..."
-    docker network create mynet_default
+    echo "Creating network 'docker_default_net'..."
+    docker network create docker_default_net
 fi
 
 mkdir ../../my-docker-volumes

@@ -18,5 +18,5 @@ services:
           - hazelcastmc5_net
 networks:
   default:
-    name: mynet_default
+    name: docker_default_net
     external: true
