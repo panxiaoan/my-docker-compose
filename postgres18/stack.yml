@@ -1,13 +1,13 @@
 services:
-  postgres17:
-    image: postgres:17.5-alpine3.22 # https://github.com/docker-library/docs/blob/master/postgres/README.md
-    container_name: postgres17
-    hostname: postgres17
+  postgres18:
+    image: postgres:18.0-alpine3.22 # https://github.com/docker-library/docs/blob/master/postgres/README.md
+    container_name: postgres18
+    hostname: postgres18
     # network_mode: host # 设置网络模式为主机模式(端口映射无效)
-    restart: no # always | no | on-failure
+    restart: always # always | no | on-failure
     privileged: false
     ports:
-      - 54320:5432
+      - 54321:5432
     shm_size: 300MB
     command: >
       -c shared_buffers=256MB
@@ -21,9 +21,9 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=1qaz<LP_
       - POSTGRES_INITDB_ARGS=--encoding=UTF8 --locale=C.UTF-8
-      - PGDATA=/var/lib/postgresql/data/pgdata
+      - PGDATA=/var/lib/postgresql/18/docker
     volumes:
-      - ../../my-docker-volumes/postgres17/data:/var/lib/postgresql/data
+      - ../../my-docker-volumes/postgres18/data:/var/lib/postgresql/18/docker
     logging:
       driver: "json-file"
       options:
@@ -32,7 +32,7 @@ services:
     networks:
       default: 
         aliases:
-          - postgres17_net
+          - postgres18_net
 networks:
   default:
     name: docker_default_net

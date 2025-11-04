@@ -1,6 +1,6 @@
 services:
   redis8:
-    image: redis:8.2.1-alpine3.22 # https://github.com/docker-library/docs/blob/master/redis/README.md
+    image: redis:8.2.3-alpine3.22 # https://github.com/docker-library/docs/blob/master/redis/README.md
     container_name: redis8
     hostname: redis8
     # network_mode: host # 设置网络模式为主机模式(端口映射无效)
